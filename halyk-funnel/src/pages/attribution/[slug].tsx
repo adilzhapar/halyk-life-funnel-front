@@ -31,10 +31,8 @@ const AttributionSteps = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
     control,
-    resetField,
     setValue,
   } = methods;
 
@@ -51,7 +49,7 @@ const AttributionSteps = () => {
       attribution_id,
       properties: { [key]: target.value },
     });
-    if (step < 8) {
+    if (step < 7) {
       setStep((prev) => prev + 1);
     } else {
       router.push(`/`);
@@ -106,7 +104,7 @@ const AttributionSteps = () => {
                 <span className='text-[#107c54]'>{step}&nbsp;/</span>&nbsp;8
               </p>
             </div>
-            <Progress value={step * 12.5} className='mb-10' />
+            <Progress value={step * 14.5} className='mb-10' />
           </>
         )}
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
@@ -147,17 +145,27 @@ const AttributionSteps = () => {
           {step === 2 && (
             <FormField
               control={control}
-              {...register('properties.is_married', {
+              {...register('properties.work_style', {
                 onChange: (e) => {
                   onChange(e.target);
                 },
               })}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Состоите ли вы в браке?</h1>
+                  <h1>Какой у вас формат работы?</h1>
                   <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange(true)}>Да</Button>
-                    <Button onClick={() => field.onChange(false)}>Нет</Button>
+                    <Button onClick={() => field.onChange('PHYSICAL')}>
+                      Физический
+                    </Button>
+                    <Button onClick={() => field.onChange('OFFICE')}>
+                      Офисный
+                    </Button>
+                    <Button onClick={() => field.onChange('REMOTE')}>
+                      Удаленный
+                    </Button>
+                    <Button onClick={() => field.onChange('OTHER')}>
+                      Другое
+                    </Button>
                   </div>
                 </div>
               )}
@@ -318,35 +326,6 @@ const AttributionSteps = () => {
             />
           )}
           {step === 7 && (
-            <FormField
-              control={control}
-              {...register('properties.last_injurance_time', {
-                onChange: (e) => {
-                  onChange(e.target);
-                },
-              })}
-              render={({ field }) => (
-                <div className='flex flex-col gap-8'>
-                  <h1>Когда последний раз получали травму?</h1>
-                  <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange('THIS_MONTH')}>
-                      В этом месяце
-                    </Button>
-                    <Button onClick={() => field.onChange('LAST_MONTH')}>
-                      В прошлом месяце
-                    </Button>
-                    <Button onClick={() => field.onChange('THIS_YEAR')}>
-                      В этом году
-                    </Button>
-                    <Button onClick={() => field.onChange('MORE_THAN_YEAR')}>
-                      Больше года назад
-                    </Button>
-                  </div>
-                </div>
-              )}
-            />
-          )}
-          {step === 8 && (
             <>
               <FormField
                 control={control}
