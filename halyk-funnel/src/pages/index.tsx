@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <main className={`min-h-screen bg-[#f7f7f7]`}>
-      <div className='max-w-[500px] mx-auto w-96 px-4 py-4 flex flex-col items-center'>
+      <div className='max-w-[500px] mx-auto w-100 px-4 py-4 flex flex-col items-center'>
         <Form {...methods}>
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
             {step === 0 && (
