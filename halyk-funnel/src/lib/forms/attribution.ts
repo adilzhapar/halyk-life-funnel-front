@@ -3,7 +3,7 @@ import z from 'zod';
 export const CreateAttributionInput = z.object({
   attribution_id: z.string().uuid().optional(),
   gender: z.enum(['MALE', 'FEMALE']),
-  age: z.enum(['18-24', '25-34', '35-44', '45+']),
+  age: z.enum(['18-30', '30-50', '50+']),
 });
 
 export type CreateAttributionInputType = z.infer<typeof CreateAttributionInput>;

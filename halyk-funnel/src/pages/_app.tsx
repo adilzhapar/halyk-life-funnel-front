@@ -1,12 +1,15 @@
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
-const inter = Inter({ subsets: ['latin'] });
+const manrope = localFont({
+  src: './Manrope-VariableFont_wght.ttf',
+})
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main>
+    <main className={manrope.className}>
       <Component {...pageProps} />
     </main>
   );

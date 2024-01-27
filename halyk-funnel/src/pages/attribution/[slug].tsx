@@ -61,7 +61,7 @@ const AttributionSteps = () => {
   };
 
   const handleClickBack = () => {
-    if (step === 0) {
+    if (step === 1) {
       router.push('/');
     } else {
       setStep((prev) => prev - 1);
