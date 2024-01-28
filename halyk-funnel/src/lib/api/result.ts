@@ -2,7 +2,7 @@ import { api } from './api';
 
 export const getResult = async (attribution_id: string) => {
   try {
-    const response = await api.get('/recommendations/', {
+    const response = await api.get('/recommendations/products/', {
       params: {
         attribution_id,
       },
@@ -10,7 +10,7 @@ export const getResult = async (attribution_id: string) => {
 
     console.log('response', response);
 
-    return response.data;
+    return response.data.recommended_products;
   } catch (e) {
     console.log('error', e);
   }

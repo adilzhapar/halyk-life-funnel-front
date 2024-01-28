@@ -295,12 +295,12 @@ const AttributionSteps = () => {
                     Как бы вы оценили состояние вашего здоровья
                   </h1>
                   <div className='flex flex-col gap-8'>
-                    <Button
+                  <Button
                       className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
-                      onClick={() => field.onChange('BAD')}
+                      onClick={() => field.onChange('EXCELLENT')}
                     >
                       <span className='text-base font-bold text-[#182c14]'>
-                        Нужно лечение
+                        Полностью здоров
                       </span>
                     </Button>
                     <Button
@@ -313,10 +313,10 @@ const AttributionSteps = () => {
                     </Button>
                     <Button
                       className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
-                      onClick={() => field.onChange('EXCELLENT')}
+                      onClick={() => field.onChange('BAD')}
                     >
                       <span className='text-base font-bold text-[#182c14]'>
-                        Полностью здоров
+                        Нужно лечение
                       </span>
                     </Button>
                   </div>
