@@ -52,7 +52,7 @@ const AttributionSteps = () => {
     if (step < 7) {
       setStep((prev) => prev + 1);
     } else {
-      router.push(`/`);
+      router.push(`/result/${attribution_id}`);
     }
   };
 
@@ -109,7 +109,7 @@ const AttributionSteps = () => {
         )}
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-8 w-full'>
           {step === 0 && (
-            <div className='w-full flex flex-col items-center max-auto max-w-[400px]'>
+            <div className='w-full flex flex-col items-center max-auto'>
               <Image
                 className='pt-4'
                 src='/logo.svg'
@@ -117,10 +117,14 @@ const AttributionSteps = () => {
                 width={120}
                 height={25}
               />
-              <h1>info about insurance</h1>
-              <div className=' max-w-[400px] fixed bottom-0 left-0 right-0 mb-4 mx-4'>
+              <Image className='my-10 rounded-[40px]' src='/apashka.jpeg' alt='apashka' width={200} height={300}/>
+              <h1 className='text-center text-4xl font-extrabold text-[#107c54] py-6'>90 миллиардов тенге</h1>
+              <p className='text-center text-lg font-medium text-[#182c14]'>выплатили Казахстанцам в рамках страхования жизни за прошлый год.</p>
+              <p className='text-center text-lg font-medium text-[#182c14] pt-4'>По данным gov.kz количество заключенных договоров страхования увеличилось на <span className='text-center font-bold text-[#107c54]'>32,3 %</span> по сравнению с прошлым годом.</p>
+
+              <div className=' fixed bottom-0 left-0 right-0 mb-4 mx-4'>
                 <Button
-                  className='w-full bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12 '
+                  className='w-full bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12 max-w-[400px]'
                   onClick={() => setStep((prev) => prev + 1)}
                 >
                   Продолжить
@@ -333,22 +337,22 @@ const AttributionSteps = () => {
                     <Button
                       className={
                         field.value?.includes('DEBT_PAYMENT')
-                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
-                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                        ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#107c54d2] focus:bg-[#288965]' text-[#fdfdfdde]`
+                        : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' text-[#182c14]`
                       }
                       onClick={() => {
                         toggleFinancialGoal(field.value ?? [], 'DEBT_PAYMENT');
                       }}
                     >
-                      <span className='text-base font-bold text-[#182c14]'>
+                      <span className='text-base font-bold '>
                         Закрыть долги
                       </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('CHILDREN_EDUCATION')
-                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
-                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                        ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#107c54d2] focus:bg-[#288965]' text-[#fdfdfdde]`
+                        : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' text-[#182c14]`
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -357,15 +361,15 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      <span className='text-base font-bold text-[#182c14]'>
+                      <span className='text-base font-bold '>
                         Оплатить обучение детей
                       </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('MORTGAGE_PROTECTION')
-                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
-                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                        ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#107c54d2] focus:bg-[#288965]' text-[#fdfdfdde]`
+                        : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' text-[#182c14]`
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -374,15 +378,15 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      <span className='text-base font-bold text-[#182c14]'>
+                      <span className='text-base font-bold '>
                         Предостеречься от ипотеки
                       </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('INCOME_REPLACEMENT')
-                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
-                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#107c54d2] focus:bg-[#288965]' text-[#fdfdfdde]`
+                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' text-[#182c14]`
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -391,7 +395,7 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      <span className='text-base font-bold text-[#182c14]'>
+                      <span className='text-base font-bold '>
                         Пассивный доход
                       </span>
                     </Button>
@@ -481,6 +485,9 @@ const AttributionSteps = () => {
                           width={60}
                           height={60}
                         />
+                        <span className='text-base font-bold text-[#182c14]'>
+                          Инвестиции
+                        </span>
                       </div>
                       <div
                         className={
@@ -498,6 +505,9 @@ const AttributionSteps = () => {
                           width={60}
                           height={60}
                         />
+                        <span className='text-base font-bold text-[#182c14]'>
+                          Сбережения
+                        </span>
                       </div>
                       <div
                         className={
@@ -515,6 +525,9 @@ const AttributionSteps = () => {
                           width={60}
                           height={60}
                         />
+                        <span className='text-base font-bold text-[#182c14]'>
+                          Собственность
+                        </span>
                       </div>
                       <div
                         className={
@@ -532,6 +545,9 @@ const AttributionSteps = () => {
                           width={60}
                           height={60}
                         />
+                        <span className='text-base font-bold text-[#182c14]'>
+                          Бизнес
+                        </span>
                       </div>
                     </div>
                     <Button

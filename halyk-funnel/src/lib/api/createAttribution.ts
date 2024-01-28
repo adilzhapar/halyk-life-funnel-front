@@ -4,7 +4,7 @@ import { api } from "./api";
 
 export const createAttribution = async (data: CreateAttributionInputType) => {
   try {
-    const response = await api.post("/attribution/init/", { ...data });
+    const response = await api.post("/attribution/init/", data);
     
     console.log('response', response);
     

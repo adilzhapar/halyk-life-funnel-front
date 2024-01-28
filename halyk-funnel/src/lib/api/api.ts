@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://acea-46-235-72-49.ngrok-free.app/",
+  baseURL: "https://halyq-life-funnel-app.onrender.com/",
   headers: {
     "Content-Type": "application/json",
   },
