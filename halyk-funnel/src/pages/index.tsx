@@ -52,7 +52,7 @@ export default function Home() {
           <form onSubmit={handleSubmit(onSubmit)} className=''>
             {step === 0 && (
               <>
-                <h1 className='text-[#24234C] break-words font-bold text-center text-3xl my-12'>Пройди тест и узнай сколько стоит твоя безопасность!</h1>
+                <h1 className='text-[#182c14] break-words font-bold text-center text-3xl my-12'>Пройди тест и узнай сколько стоит твоя безопасность!</h1>
                 <FormField
                   control={control}
                   {...register('gender', {
@@ -88,13 +88,13 @@ export default function Home() {
             )}
             {step === 1 && (
               <>
-                <h1 className='text-[#24234C] break-words font-bold text-center text-3xl my-12'>Укажи возраст</h1>
+                <h1 className='text-[#182c14] break-words font-bold text-center text-3xl my-12'>Укажи возраст</h1>
                 <FormField
                   control={control}
                   {...register('age')}
                   render={({ field }) => (
                     <div className='flex flex-wrap gap-8 justify-center'>
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center max-h-96">
                         <Image
                           className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
                           alt='male'
@@ -102,9 +102,9 @@ export default function Home() {
                           width={150}
                           height={300}
                         />
-                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('18-30')}>18-30</Button>
+                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('18-30')}>18-30</Button>
                       </div>
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center max-h-96">
                         <Image
                           className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
                           alt='male'
@@ -112,9 +112,9 @@ export default function Home() {
                           width={150}
                           height={300}
                         />
-                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('30-50')}>30-50</Button>
+                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('30-50')}>30-50</Button>
                       </div>
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col items-center max-h-96">
                         <Image
                           className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
                           alt='male'
@@ -122,7 +122,7 @@ export default function Home() {
                           width={150}
                           height={300}
                         />
-                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('50+')}>50+</Button>
+                        <Button className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12' onClick={() => field.onChange('50+')}>50+</Button>
                       </div>
                     </div>
                   )}

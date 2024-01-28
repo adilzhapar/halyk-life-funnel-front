@@ -93,7 +93,7 @@ const AttributionSteps = () => {
       <div className='max-w-[500px] mx-auto w-100 px-4 py-4 flex flex-col items-center text-center'>
         {step > 0 && (
           <>
-            <div className='w-full flex justify-between py-4 items-center'>
+            <div className='w-full flex max-auto justify-between py-4 items-center'>
               <ArrowBackIosNew
                 color='disabled'
                 className='cursor-pointer'
@@ -101,20 +101,32 @@ const AttributionSteps = () => {
               />
               <Image src='/logo.svg' alt='logo' width={150} height={36} />
               <p className='font-bold'>
-                <span className='text-[#107c54]'>{step}&nbsp;/</span>&nbsp;8
+                <span className='text-[#107c54]'>{step}&nbsp;/</span>&nbsp;7
               </p>
             </div>
-            <Progress value={step * 14.5} className='mb-10' />
+            <Progress value={step * 14.2} className='mb-10 ' />
           </>
         )}
-        <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
+        <form onSubmit={handleSubmit(onSubmit)} className='space-y-8 w-full'>
           {step === 0 && (
-            <>
+            <div className='w-full flex flex-col items-center max-auto max-w-[400px]'>
+              <Image
+                className='pt-4'
+                src='/logo.svg'
+                alt='logo'
+                width={120}
+                height={25}
+              />
               <h1>info about insurance</h1>
-              <Button onClick={() => setStep((prev) => prev + 1)}>
-                Продолжить
-              </Button>
-            </>
+              <div className=' max-w-[400px] fixed bottom-0 left-0 right-0 mb-4 mx-4'>
+                <Button
+                  className='w-full bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12 '
+                  onClick={() => setStep((prev) => prev + 1)}
+                >
+                  Продолжить
+                </Button>
+              </div>
+            </div>
           )}
           {step === 1 && (
             <FormField
@@ -125,20 +137,54 @@ const AttributionSteps = () => {
                 },
               })}
               render={({ field }) => (
-                <div className='flex flex-col gap-8'>
-                  <h1>Укажите текущий уровень дохода</h1>
-                  <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange('LOW')}>
-                      Ниже среднего
-                    </Button>
-                    <Button onClick={() => field.onChange('MEDIUM')}>
-                      Средний
-                    </Button>
-                    <Button onClick={() => field.onChange('HIGH')}>
-                      Выше среднего
-                    </Button>
+                <>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Выбери свой текущий доход
+                  </h1>
+                  <div className='flex flex-wrap gap-8 justify-center'>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
+                        alt='male'
+                        src='/income/high.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('HIGH')}
+                      >
+                        1kk +
+                      </Button>
+                    </div>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
+                        alt='male'
+                        src='/income/middle.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('MEDIUM')}
+                      >{`400k-800k`}</Button>
+                    </div>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#107c54] border-4 border-b-0'
+                        alt='male'
+                        src='/income/low.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('LOW')}
+                      >{`< 400k`}</Button>
+                    </div>
                   </div>
-                </div>
+                </>
               )}
             />
           )}
@@ -152,20 +198,55 @@ const AttributionSteps = () => {
               })}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Какой у вас формат работы?</h1>
-                  <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange('PHYSICAL')}>
-                      Физический
-                    </Button>
-                    <Button onClick={() => field.onChange('OFFICE')}>
-                      Офисный
-                    </Button>
-                    <Button onClick={() => field.onChange('REMOTE')}>
-                      Удаленный
-                    </Button>
-                    <Button onClick={() => field.onChange('OTHER')}>
-                      Другое
-                    </Button>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Какой у вас формат работы?
+                  </h1>
+                  <div className='flex flex-wrap gap-8 justify-center'>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#dddddd] border-2 border-b-0'
+                        alt='male'
+                        src='/work/physical.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('PHYSICAL')}
+                      >
+                        Физический
+                      </Button>
+                    </div>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#dddddd] border-2 border-b-0'
+                        alt='male'
+                        src='/work/office.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('OFFICE')}
+                      >
+                        Офисный
+                      </Button>
+                    </div>
+                    <div className='flex flex-col items-center max-h-96'>
+                      <Image
+                        className='rounded-t-[90px] border-[#dddddd] border-2 border-b-0'
+                        alt='male'
+                        src='/work/remote.jpeg'
+                        width={150}
+                        height={300}
+                      />
+                      <Button
+                        className='w-40 bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
+                        onClick={() => field.onChange('REMOTE')}
+                      >
+                        Удаленный
+                      </Button>
+                    </div>
                   </div>
                 </div>
               )}
@@ -177,9 +258,12 @@ const AttributionSteps = () => {
               {...register('properties.number_of_dependants')}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Сколько человек зависит от вашего дохода</h1>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Сколько человек зависит от вашего дохода
+                  </h1>
                   <Input onChange={field.onChange} type='number' />
                   <Button
+                    className=' bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12'
                     onClick={() =>
                       onChange({
                         name: field.name,
@@ -203,16 +287,33 @@ const AttributionSteps = () => {
               })}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Как бы вы оценили состояние вашего здоровья</h1>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Как бы вы оценили состояние вашего здоровья
+                  </h1>
                   <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange('BAD')}>
-                      Нужно лечение
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('BAD')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Нужно лечение
+                      </span>
                     </Button>
-                    <Button onClick={() => field.onChange('GOOD')}>
-                      Не жалуюсь
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('GOOD')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Не жалуюсь
+                      </span>
                     </Button>
-                    <Button onClick={() => field.onChange('EXCELLENT')}>
-                      Полностью здоров
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('EXCELLENT')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Полностью здоров
+                      </span>
                     </Button>
                   </div>
                 </div>
@@ -225,25 +326,29 @@ const AttributionSteps = () => {
               {...register('properties.financial_goals')}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Какие у вас финансовые ценности?</h1>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Какие у вас финансовые ценности?
+                  </h1>
                   <div className='flex flex-col gap-8'>
                     <Button
                       className={
                         field.value?.includes('DEBT_PAYMENT')
-                          ? `border-2 border-red-500`
-                          : ``
+                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
                       }
                       onClick={() => {
                         toggleFinancialGoal(field.value ?? [], 'DEBT_PAYMENT');
                       }}
                     >
-                      Закрыть долги
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Закрыть долги
+                      </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('CHILDREN_EDUCATION')
-                          ? `border-2 border-red-500`
-                          : ``
+                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -252,13 +357,15 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      Оплатить обучение детей
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Оплатить обучение детей
+                      </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('MORTGAGE_PROTECTION')
-                          ? `border-2 border-red-500`
-                          : ``
+                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -267,13 +374,15 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      Защита от ипотеки
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Предостеречься от ипотеки
+                      </span>
                     </Button>
                     <Button
                       className={
                         field.value?.includes('INCOME_REPLACEMENT')
-                          ? `border-2 border-red-500`
-                          : ``
+                          ? `bg-[#288965] className='flex p-5 rounded-lg hover:bg-[#c4c4c4] focus:bg-[#288965]' `
+                          : `className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]' `
                       }
                       onClick={() => {
                         toggleFinancialGoal(
@@ -282,10 +391,13 @@ const AttributionSteps = () => {
                         );
                       }}
                     >
-                      Пассивный доход
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Пассивный доход
+                      </span>
                     </Button>
                   </div>
                   <Button
+                    className='bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12 mt-4'
                     onClick={() =>
                       onChange({
                         name: field.name,
@@ -309,16 +421,33 @@ const AttributionSteps = () => {
               })}
               render={({ field }) => (
                 <div className='flex flex-col gap-8'>
-                  <h1>Уровень долга</h1>
+                  <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                    Уровень долга
+                  </h1>
                   <div className='flex flex-col gap-8'>
-                    <Button onClick={() => field.onChange('LOW')}>
-                      Низкий
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('LOW')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Низкий
+                      </span>
                     </Button>
-                    <Button onClick={() => field.onChange('MEDIUM')}>
-                      Средний
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('MEDIUM')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Средний
+                      </span>
                     </Button>
-                    <Button onClick={() => field.onChange('HIGH')}>
-                      Высокий
+                    <Button
+                      className='flex p-5 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4] focus:bg-[#288965]'
+                      onClick={() => field.onChange('HIGH')}
+                    >
+                      <span className='text-base font-bold text-[#182c14]'>
+                        Высокий
+                      </span>
                     </Button>
                   </div>
                 </div>
@@ -332,70 +461,81 @@ const AttributionSteps = () => {
                 {...register('properties.assets')}
                 render={({ field }) => (
                   <div className='flex flex-col gap-8'>
-                    <h1>Какие у вас имеются активы?</h1>
-                    <div className='flex flex-col gap-8'>
-                      <Button
+                    <h1 className='text-2xl font-bold text-[#182c14] text-center'>
+                      Какие у вас имеются активы?
+                    </h1>
+                    <div className='grid grid-cols-2 gap-8'>
+                      <div
                         className={
                           field.value?.includes('INVESTMENT')
-                            ? `border-2 border-red-500`
-                            : ``
+                            ? `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#c4c4c4] hover:bg-[#acacac]`
+                            : `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4]`
                         }
                         onClick={() => {
                           toggleAssets(field.value ?? [], 'INVESTMENT');
                         }}
                       >
-                        Инвестиции
-                      </Button>
-                      <Button
+                        <Image
+                          src='/assets/bar_chart.png'
+                          alt='chart'
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <div
                         className={
                           field.value?.includes('SAVINGS')
-                            ? `border-2 border-red-500`
-                            : ``
+                            ? `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#c4c4c4] hover:bg-[#acacac]`
+                            : `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4]`
                         }
                         onClick={() => {
                           toggleAssets(field.value ?? [], 'SAVINGS');
                         }}
                       >
-                        Сбережения
-                      </Button>
-                      <Button
+                        <Image
+                          src='/assets/moneybag.png'
+                          alt='chart'
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <div
                         className={
                           field.value?.includes('PROPERTY')
-                            ? `border-2 border-red-500`
-                            : ``
+                            ? `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#c4c4c4] hover:bg-[#acacac]`
+                            : `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4]`
                         }
                         onClick={() => {
                           toggleAssets(field.value ?? [], 'PROPERTY');
                         }}
                       >
-                        Собственность
-                      </Button>
-                      <Button
+                        <Image
+                          src='/assets/property.png'
+                          alt='chart'
+                          width={60}
+                          height={60}
+                        />
+                      </div>
+                      <div
                         className={
                           field.value?.includes('BUSINESS')
-                            ? `border-2 border-red-500`
-                            : ``
+                            ? `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#c4c4c4] hover:bg-[#acacac]`
+                            : `col-span-1 group flex flex-col  justify-center items-center px-2 py-8 rounded-lg bg-[#dddddd] hover:bg-[#c4c4c4]`
                         }
                         onClick={() => {
                           toggleAssets(field.value ?? [], 'BUSINESS');
                         }}
                       >
-                        Бизнес
-                      </Button>
-                      <Button
-                        className={
-                          field.value?.includes('OTHER')
-                            ? `border-2 border-red-500`
-                            : ``
-                        }
-                        onClick={() => {
-                          toggleAssets(field.value ?? [], 'OTHER');
-                        }}
-                      >
-                        Другое
-                      </Button>
+                        <Image
+                          src='/assets/business.png'
+                          alt='chart'
+                          width={60}
+                          height={60}
+                        />
+                      </div>
                     </div>
                     <Button
+                      className='bg-[#107c54] hover:bg-[#107c54d2] focus:bg-[#ecb13c] text-[#fdfdfdde] text-lg font-bold h-12 mt-4'
                       onClick={() =>
                         onChange({
                           name: field.name,
